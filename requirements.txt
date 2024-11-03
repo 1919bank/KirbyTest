@@ -1,0 +1,13 @@
+selenium
+webdriver-manager
+requests
+beautifulsoup4
+pytest
+pytest-html
+Jinja2
+pandas
+Flask
+plotly
+aiohttp
+axe-selenium-python
+python-dotenv

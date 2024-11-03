@@ -1,0 +1,8 @@
+{
+  "url": "https://tipalti.com/#requestDemo",
+  "fields": [
+    {"name": "username", "value": "testuser"},
+    {"name": "email", "value": "testuser@example.com"}
+  ],
+  "submit_button": "//button[@type='submit']"
+}
