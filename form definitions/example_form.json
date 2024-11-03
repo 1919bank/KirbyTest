@@ -1,8 +1,15 @@
 {
   "url": "https://tipalti.com/#requestDemo",
   "fields": [
-    {"name": "username", "value": "testuser"},
-    {"name": "email", "value": "testuser@example.com"}
+    {"name": "email", "value": "testuser@example.com"},
+    {"name": "industry", "value": "business services"},
+    {"name": "Size_range", "value": "under 10"},
+    {"name": "firstName", "value": "test"},
+    {"name": "lastName", "value": "user"},
+    {"name": "company", "value": "example"},
+    {"name": "Country", "value": "United States"},
+    {"name": "Country_state", "value": "California"},
+    {"name": "phone", "value": "1231231234"}
   ],
   "submit_button": "//button[@type='submit']"
 }
