@@ -1,10 +1,8 @@
-# KirbyTest: Scalable Form Submission QA Tool
+# KirbyTest
 
-## Overview
+KirbyTest is an innovative and user-friendly QA tool designed to automate the testing and validation of web forms. Inspired by the playful spirit of Kirby, this tool aims to simplify the process of ensuring form functionality, usability, and accessibility across various platforms. Whether you're a developer or a tester, KirbyTest empowers you to launch forms that work flawlessly while providing a delightful user experience.
 
-**KirbyTest** is an innovative and user-friendly QA tool designed to automate the testing and validation of web forms. Inspired by the playful spirit of Kirby, this tool aims to simplify the process of ensuring form functionality, usability, and accessibility across various platforms. Whether you're a developer or a tester, KirbyTest empowers you to launch forms that work flawlessly while providing a delightful user experience.
-
-## Key Features
+## Features
 
 - **Automated Testing**: Define forms using simple JSON or YAML configurations and automate the testing process. KirbyTest simulates user inputs and validates responses against expected outcomes to ensure your forms behave as intended.
 
@@ -20,41 +18,119 @@
 
 - **Interactive Dashboard**: Monitor real-time performance and visualize trends over time through an intuitive web-based dashboard, making it easy to track the health of your forms.
 
-## Current Progress
+## Installation
 
-KirbyTest is currently in active development, and we are excited about the innovative features we are implementing. Here's a glimpse of what’s in progress:
+### Prerequisites
+- Python 3.13
+- ChromeDriver (or other WebDriver compatible with your browser)
+- Node.js (for additional tools if needed)
 
-- **Asynchronous Form Testing**: We are finalizing the asynchronous testing capabilities to ensure that KirbyTest can efficiently handle multiple form submissions at once.
-  
-- **Reporting Features**: Enhancements to the reporting module are underway, allowing users to generate custom reports and export results in various formats (CSV, PDF).
+### Setting Up the Environment
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/KirbyTest.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd KirbyTest
+   ```
+3. Create a virtual environment and activate it:
+   ```sh
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   ```
+4. Install dependencies:
+   ```sh
+   pip install -r requirements.txt
+   ```
 
-- **Dashboard Development**: The interactive dashboard is in the works, with features to visualize form performance and user interactions.
+### WebDriver Setup
+Ensure that you have the appropriate WebDriver installed (e.g., ChromeDriver). You can use `webdriver-manager` to automatically manage the driver:
 
-- **Community Input**: We value community feedback and contributions. Your insights can help shape the direction of KirbyTest, making it even more useful for developers and testers.
-
-## Getting Started
-
-To get started with KirbyTest, clone the repository and follow the setup instructions:
-
-```bash
-git clone https://github.com/yourusername/KirbyTest.git
-cd KirbyTest
-# Install dependencies
-pip install -r requirements.txt
+```sh
+pip install webdriver-manager
 ```
 
 ## Usage
 
-(Provide examples of how to use the tool once it's ready, including command-line instructions or code snippets.)
+### Running Tests
+1. **Form Definition**: Define the forms you want to test using a JSON file. For example, create `form_definitions/example_form.json` with the following content:
+   ```json
+   {
+       "url": "http://example.com/form",
+       "fields": [
+           {"name": "username", "value": "testuser"},
+           {"name": "email", "value": "testuser@example.com"}
+       ],
+       "submit_button": "//button[@type='submit']"
+   }
+   ```
+
+2. **Run the Form Tester**:
+   ```sh
+   python src/form_tester.py
+   ```
+
+3. **Generate Reports**: After running the tests, generate reports using:
+   ```sh
+   python src/reporter.py
+   ```
+
+### Running Tests with Pytest
+KirbyTest uses `pytest` for testing. To run all tests, use:
+
+```sh
+pytest test/
+```
+
+To generate an HTML report:
+
+```sh
+pytest --html=report.html
+```
+
+## Integration with CI/CD
+To integrate KirbyTest into your CI/CD pipeline, add a GitHub Actions workflow file (`.github/workflows/test.yml`):
+
+```yaml
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.13'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests
+        run: pytest --html=report.html
+      - name: Upload Test Report
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-report
+          path: report.html
+```
 
 ## Contributing
+We welcome contributions! Please follow these steps to contribute:
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature-name`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature-name`).
+5. Open a pull request.
 
-We welcome contributions! If you would like to contribute to KirbyTest, please fork the repository and submit a pull request. For major changes, please open an issue first to discuss what you would like to change.
 ## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-(You can add acknowledgments for inspirations, libraries, or any contributors here.)
+## Contact
+For any questions or issues, please open an issue in the GitHub repository or reach out to [your-email@example.com].
 
