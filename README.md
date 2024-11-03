@@ -132,5 +132,5 @@ We welcome contributions! Please follow these steps to contribute:
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
-For any questions or issues, please open an issue in the GitHub repository or reach out to [your-email@example.com].
+For any questions or issues, please open an issue in the GitHub repository or reach out to hello@cesarreyes.digital.
 
